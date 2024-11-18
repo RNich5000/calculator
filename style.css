@@ -1,0 +1,40 @@
+* {
+	outline: 1px solid red;
+}
+
+.container {
+	background-color: azure;
+	display: flex;
+	flex-direction: column;
+	width: 50%;
+}
+
+.top-section {
+	display: flex;
+	flex-direction: column;
+}
+
+.bottom-section {
+	display: flex;
+}
+
+.numbers {
+	display: flex;
+	flex-wrap: wrap;
+	width: 75%;
+	justify-content: space-around;
+}
+
+.number {
+	width: 30%;
+	text-align: center;
+	height: 60px;
+}
+
+.zero {
+	width: 66%;
+}
+
+.bottom-row {
+	display: flex;
+}
