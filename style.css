@@ -5,7 +5,12 @@
 }
 
 #history-text {
+	height: 18px;
 	font-size: 18px;
+}
+
+#output-text {
+	height: 40px;
 }
 
 .container {
@@ -34,8 +39,15 @@
 	border-radius: 12px;
 	background-color: cornsilk;
 	width: 20%;
-	justify-content: center;
-	align-items: center;
+}
+
+.btn p {
+	width: 100%;
+	text-align: center;
+}
+
+.btn :hover {
+	cursor: pointer;
 }
 
 .middle-section {
