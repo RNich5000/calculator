@@ -8,16 +8,23 @@ const outputText = document.querySelector("#output-text");
 let num1 = "";
 let num2 = "";
 let operator = "";
+let resetOnNextClick = false;
 
 numberButtons.forEach((btn) => {
 	btn.addEventListener("click", () => {
+		if (resetOnNextClick) {
+			clearInput();
+		}
 		// add case for empty string + dot
 		if (operator === "") {
 			num1 += btn.innerText;
+			outputText.textContent = num1;
 		} else {
 			num2 += btn.innerText;
+			outputText.textContent = num2;
 		}
 
+		resetOnNextClick = false;
 		generateHistoryText();
 	});
 });
@@ -35,6 +42,7 @@ operatorButtons.forEach((btn) => {
 equalsButton.addEventListener("click", () => {
 	if (num1 !== "" && num2 !== "" && operator !== "") {
 		outputText.textContent = operate(num1, num2, operator);
+		historyText.textContent += " =";
 	}
 });
 
@@ -45,6 +53,7 @@ clearButton.addEventListener("click", () => {
 const operate = function (num1Str, num2Str, operator) {
 	const firstNum = parseFloat(num1Str);
 	const secondNum = parseFloat(num2Str);
+	resetOnNextClick = true;
 	switch (operator) {
 		case "+":
 			return firstNum + secondNum;
