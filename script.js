@@ -15,12 +15,15 @@ numberButtons.forEach((btn) => {
 		if (resetOnNextClick) {
 			clearInput();
 		}
-		// add case for empty string + dot
+
+		let numberToAdd = "";
 		if (operator === "") {
-			num1 += btn.innerText;
+			numberToAdd = validateInput(num1, btn.innerText);
+			num1 += numberToAdd;
 			outputText.textContent = num1;
 		} else {
-			num2 += btn.innerText;
+			numberToAdd = validateInput(num2, btn.innerText);
+			num2 += numberToAdd;
 			outputText.textContent = num2;
 		}
 
@@ -29,11 +32,22 @@ numberButtons.forEach((btn) => {
 	});
 });
 
+const validateInput = function (current, input) {
+	if (input === ".") {
+		if (current === "") {
+			return "0.";
+		} else if (current.includes(".")) {
+			return "";
+		}
+	}
+
+	return input;
+};
+
 operatorButtons.forEach((btn) => {
 	btn.addEventListener("click", () => {
 		if (operator === "" && num1 !== "") {
 			operator = btn.textContent;
-			// add case for num1 null
 			generateHistoryText();
 		}
 	});
@@ -62,8 +76,11 @@ const operate = function (num1Str, num2Str, operator) {
 		case "x":
 			return firstNum * secondNum;
 		case "÷":
-			// case for divide by 0 error
-			return firstNum / secondNum;
+			if (secondNum === 0) {
+				return "Impossible!";
+			} else {
+				return firstNum / secondNum;
+			}
 		default:
 			break;
 	}
