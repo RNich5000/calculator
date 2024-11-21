@@ -31,7 +31,7 @@
 .bottom-section {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
+	justify-content: space-around;
 }
 
 .btn {
@@ -39,12 +39,18 @@
 	border: 3px solid blue;
 	border-radius: 12px;
 	background-color: cornsilk;
-	width: 20%;
+	width: 90%;
 }
 
 .btn p {
 	width: 100%;
 	text-align: center;
+}
+
+.col {
+	display: flex;
+	flex-direction: column;
+	width: 20%;
 }
 
 .btn :hover {
@@ -57,7 +63,7 @@
 }
 
 .clear {
-	width: 46%;
+	width: 43%;
 }
 
 #output-text {
